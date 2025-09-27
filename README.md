@@ -133,5 +133,5 @@ If you encounter issues:
 ## 📫 Contact / Contributions
 
 - Email: sameerkhan47149@gmail.com
-- LinkedIn: sameer-khan-312715235
-- GitHub: Samii2383
+- LinkedIn: https://www.linkedin.com/in/sameer-khan-312715235/
+- GitHub: https://github.com/Samii2383
