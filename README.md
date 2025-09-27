@@ -86,8 +86,14 @@ src/
 └── index.js                   # App entry point
 
 ```
+
 ## Snapshots
-[Home Page](<img width="1024" height="720" alt="Screenshot 2025-09-28 005720" src="https://github.com/user-attachments/assets/2124a803-0da6-4832-891a-37fd60d61642" />
+[Home Page]<img width="1024" height="720" alt="Screenshot 2025-09-28 005720" src="https://github.com/user-attachments/assets/2124a803-0da6-4832-891a-37fd60d61642" />
+[Resume Praising]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005745" src="https://github.com/user-attachments/assets/4491e4d2-5abd-4802-81fd-cea1a441e64e" />
+[Interview interface]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005833" src="https://github.com/user-attachments/assets/6246b6f8-9b64-49b9-8ef6-5e5f5c0a2afa" />
+[Interview Dashboard]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005921" src="https://github.com/user-attachments/assets/24c5307b-8da6-4ac3-be49-ad454e6f815f" />
+[Result Window]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005945" src="https://github.com/user-attachments/assets/c4a295d6-b908-4046-bfb0-9aed83bca0a7" />
+
 
 ## Dependencies
 
