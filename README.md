@@ -1,8 +1,11 @@
-# AI Interview Assistant
+## AI Interview Assistant 🤖
 
-A comprehensive React application for conducting automated interviews with resume parsing and AI-powered question generation.
+A comprehensive React application for conducting automated interviews with resume parsing and AI-powered question generation. Perfect for showcasing advanced React skills, state management, and UX patterns.
 
-## Features
+# 🚀 Live Demo
+(https://ai-interview-assistant-lyart-tau.vercel.app/)
+
+## 🛠 Features
 
 ### Interviewee (Chat) Tab
 - **Resume Upload**: Upload DOCX resumes with automatic information extraction (PDF requires manual input)
@@ -22,14 +25,14 @@ A comprehensive React application for conducting automated interviews with resum
 - **Score Analysis**: Visual progress bars and grade assignments
 - **AI Feedback**: Review AI-generated feedback for each answer
 
-### Technical Features
-- **Redux State Management**: Centralized state with Redux Toolkit
-- **Local Persistence**: Data persists across browser sessions using redux-persist
-- **Resume Parsing**: DOCX parsing with automatic text extraction (PDF requires manual input due to browser limitations)
-- **AI Simulation**: Realistic question generation and scoring algorithms
-- **Responsive Design**: Works on desktop and mobile devices
-- **Modern UI**: Built with Ant Design components and Inter font family
-- **Modern Typography**: Clean, readable Inter font with optimized spacing and weights
+### ⚙️ Technical Highlights
+- React 18 with Hooks
+- Redux Toolkit for centralized state management
+- Redux Persist for local data persistence
+- Resume Parsing: DOCX support via Mammoth.js
+- AI Simulation: Timed questions & scoring algorithm
+- UI: Ant Design + Inter font family
+- Responsive Design: Optimized for desktop & mobile
 
 ## Installation
 
@@ -61,7 +64,7 @@ A comprehensive React application for conducting automated interviews with resum
 4. Click "View Details" to see complete interview results
 5. Review AI feedback and candidate performance
 
-## Project Structure
+##  🗂 Project Structure
 
 ```
 src/
@@ -126,3 +129,9 @@ If you encounter issues:
 - Multi-language support
 - Custom question sets
 - Integration with HR systems
+
+## 📫 Contact / Contributions
+
+- Email: sameerkhan47149@gmail.com
+- LinkedIn: sameer-khan-312715235
+- GitHub: Samii2383
