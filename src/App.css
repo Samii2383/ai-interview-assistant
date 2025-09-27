@@ -1,0 +1,425 @@
+/* Modern Font Setup */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.main-layout {
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Modern Typography */
+.ant-typography {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-typography h1,
+.ant-typography h2,
+.ant-typography h3,
+.ant-typography h4,
+.ant-typography h5,
+.ant-typography h6 {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.02em';
+  line-height: 1.3;
+}
+
+.ant-typography p,
+.ant-typography span,
+.ant-typography div {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Modern Button Typography */
+.ant-btn {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+  letter-spacing: '-0.01em';
+}
+
+/* Modern Input Typography */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector,
+.ant-textarea {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+}
+
+/* Modern Card Typography */
+.ant-card {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-card-head-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.02em';
+}
+
+/* Modern Tab Typography */
+.ant-tabs-tab {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+/* Modern Alert Typography */
+.ant-alert {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-alert-message {
+  font-weight: 500;
+}
+
+/* Modern Modal Typography */
+.ant-modal-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.02em';
+}
+
+/* Modern Progress Typography */
+.ant-progress-text {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+/* Modern Chat Interface Typography */
+.message-content {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.timer-display {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.01em';
+}
+
+/* Modern Upload Area Typography */
+.ant-upload-drag {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-upload-text {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+.ant-upload-hint {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+}
+
+/* Modern List Typography */
+.ant-list-item {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-list-item-meta-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.01em';
+}
+
+.ant-list-item-meta-description {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Modern Badge Typography */
+.ant-badge {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-badge-count {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+/* Modern Tag Typography */
+.ant-tag {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+  letter-spacing: '-0.01em';
+}
+
+/* Modern Timeline Typography */
+.ant-timeline-item-content {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Modern Result Typography */
+.ant-result-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.02em';
+}
+
+.ant-result-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Modern Form Typography */
+.ant-form-item-label > label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+.ant-form-item-explain,
+.ant-form-item-extra {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Modern Table Typography */
+.ant-table {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.ant-table-thead > tr > th {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: '-0.01em';
+}
+
+.ant-table-tbody > tr > td {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Modern Spin Typography */
+.ant-spin-text {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+}
+
+/* Modern Empty Typography */
+.ant-empty-description {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.content-area {
+  padding: 24px;
+  background: white;
+  margin: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 120px);
+}
+
+.tab-content {
+  padding: 20px 0;
+}
+
+.upload-area {
+  border: 2px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  background: #fafafa;
+  transition: all 0.3s;
+}
+
+.upload-area:hover {
+  border-color: #1890ff;
+  background: #f0f8ff;
+}
+
+.chat-container {
+  height: 500px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #fafafa;
+}
+
+.message {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.ai {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  word-wrap: break-word;
+}
+
+.message.user .message-content {
+  background: #1890ff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.ai .message-content {
+  background: white;
+  border: 1px solid #d9d9d9;
+  border-bottom-left-radius: 4px;
+}
+
+.timer-display {
+  position: sticky;
+  top: 0;
+  background: #1890ff;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.timer-warning {
+  background: #ff4d4f !important;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.chat-input {
+  border-top: 1px solid #d9d9d9;
+  padding: 16px;
+  background: white;
+}
+
+.candidate-card {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.candidate-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.score-badge {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.score-excellent {
+  color: #52c41a;
+}
+
+.score-good {
+  color: #1890ff;
+}
+
+.score-fair {
+  color: #faad14;
+}
+
+.score-poor {
+  color: #ff4d4f;
+}
+
+.interview-details {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.question-item {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #1890ff;
+}
+
+.answer-item {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0f8ff;
+  border-radius: 6px;
+  border-left: 3px solid #1890ff;
+}
+
+.feedback-item {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #fff7e6;
+  border-radius: 4px;
+  border-left: 3px solid #faad14;
+}
+
+.welcome-back-modal .ant-modal-content {
+  border-radius: 12px;
+}
+
+.resume-info {
+  background: #f0f8ff;
+  border: 1px solid #91d5ff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.missing-fields {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .content-area {
+    margin: 12px;
+    padding: 16px;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  .chat-container {
+    height: 400px;
+  }
+}
