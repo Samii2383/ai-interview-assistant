@@ -2,7 +2,7 @@
 
 A comprehensive React application for conducting automated interviews with resume parsing and AI-powered question generation. Perfect for showcasing advanced React skills, state management, and UX patterns.
 
-# 🚀 Live Demo
+## 🚀 Live Demo
 (https://ai-interview-assistant-lyart-tau.vercel.app/)
 
 ## 🛠 Features
