@@ -87,7 +87,7 @@ src/
 
 ```
 ## Snapshots
-[Home Page](<img width="1919" height="1079" alt="Screenshot 2025-09-28 005720" src="https://github.com/user-attachments/assets/2124a803-0da6-4832-891a-37fd60d61642" />
+[Home Page](<img width="1024" height="720" alt="Screenshot 2025-09-28 005720" src="https://github.com/user-attachments/assets/2124a803-0da6-4832-891a-37fd60d61642" />
 
 ## Dependencies
 
