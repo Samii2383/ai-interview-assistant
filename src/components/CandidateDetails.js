@@ -184,3 +184,7 @@ const CandidateDetails = ({ candidate }) => {
 };
 
 export default CandidateDetails;
+
+
+
+

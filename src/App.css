@@ -1,26 +1,78 @@
-/* Modern Font Setup */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for theming */
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --success-500: #22c55e;
+  --warning-500: #f59e0b;
+  --danger-500: #ef4444;
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-large: 0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 2px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode variables */
+.dark {
+  --primary-50: #1e3a8a;
+  --primary-100: #1e40af;
+  --primary-500: #60a5fa;
+  --primary-600: #3b82f6;
+  --primary-700: #2563eb;
+  --slate-50: #0f172a;
+  --slate-100: #1e293b;
+  --slate-200: #334155;
+  --slate-300: #475569;
+  --slate-400: #64748b;
+  --slate-500: #94a3b8;
+  --slate-600: #cbd5e1;
+  --slate-700: #e2e8f0;
+  --slate-800: #f1f5f9;
+  --slate-900: #f8fafc;
+}
+
+/* Base styles */
 * {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  @apply font-sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
-  text-align: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  font-family: 'Inter', sans-serif;
+  @apply min-h-screen bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700;
 }
 
+/* Modern Layout */
 .main-layout {
-  min-height: 100vh;
-  background: #f5f5f5;
-  font-family: 'Inter', sans-serif;
+  @apply min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300;
 }
 
-/* Modern Typography */
+.content-area {
+  @apply p-6 bg-white dark:bg-slate-800 m-6 rounded-2xl shadow-soft dark:shadow-medium min-h-[calc(100vh-120px)] transition-all duration-300;
+}
+
+.tab-content {
+  @apply py-5;
+}
+
+/* Modern Typography Overrides */
 .ant-typography {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans;
 }
 
 .ant-typography h1,
@@ -29,397 +81,421 @@
 .ant-typography h4,
 .ant-typography h5,
 .ant-typography h6 {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.02em';
-  line-height: 1.3;
+  @apply font-sans font-semibold tracking-tight leading-tight;
 }
 
 .ant-typography p,
 .ant-typography span,
 .ant-typography div {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.6;
+  @apply font-sans font-normal leading-relaxed;
 }
 
-/* Modern Button Typography */
+/* Modern Button Styles */
 .ant-btn {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
-  letter-spacing: '-0.01em';
+  @apply font-sans font-medium tracking-tight transition-all duration-200;
 }
 
-/* Modern Input Typography */
+.ant-btn-primary {
+  @apply bg-primary-500 hover:bg-primary-600 border-primary-500 hover:border-primary-600 shadow-soft hover:shadow-medium;
+}
+
+.ant-btn-primary:hover {
+  @apply transform -translate-y-0.5;
+}
+
+/* Modern Input Styles */
 .ant-input,
 .ant-input-affix-wrapper,
 .ant-select-selector,
 .ant-textarea {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
+  @apply font-sans font-normal rounded-xl border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100;
 }
 
-/* Modern Card Typography */
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-select-focused .ant-select-selector,
+.ant-textarea:focus {
+  @apply border-primary-500 shadow-glow ring-0;
+}
+
+/* Modern Card Styles */
 .ant-card {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans rounded-2xl shadow-soft dark:shadow-medium border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all duration-300;
 }
 
 .ant-card-head-title {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.02em';
+  @apply font-sans font-semibold tracking-tight text-slate-900 dark:text-slate-100;
 }
 
-/* Modern Tab Typography */
+.ant-card-body {
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+/* Modern Tab Styles */
 .ant-tabs-tab {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
+  @apply font-sans font-medium transition-all duration-200;
 }
 
-/* Modern Alert Typography */
+.ant-tabs-tab-active {
+  @apply text-primary-600 dark:text-primary-400;
+}
+
+/* Modern Alert Styles */
 .ant-alert {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans rounded-xl border-0 shadow-soft;
 }
 
 .ant-alert-message {
-  font-weight: 500;
+  @apply font-medium;
 }
 
-/* Modern Modal Typography */
+/* Modern Modal Styles */
+.ant-modal-content {
+  @apply rounded-2xl shadow-large border-0;
+}
+
 .ant-modal-title {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.02em';
+  @apply font-sans font-semibold tracking-tight text-slate-900 dark:text-slate-100;
 }
 
-/* Modern Progress Typography */
+/* Modern Progress Styles */
 .ant-progress-text {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
+  @apply font-sans font-medium text-slate-700 dark:text-slate-300;
 }
 
-/* Modern Chat Interface Typography */
-.message-content {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.5;
+/* Modern Upload Area */
+.upload-area {
+  @apply border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl p-10 text-center bg-slate-50 dark:bg-slate-800 transition-all duration-300 hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:shadow-medium;
 }
 
-.timer-display {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.01em';
-}
-
-/* Modern Upload Area Typography */
 .ant-upload-drag {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300;
 }
 
 .ant-upload-text {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
+  @apply font-sans font-medium text-slate-700 dark:text-slate-300;
 }
 
 .ant-upload-hint {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
+  @apply font-sans font-normal text-slate-500 dark:text-slate-400;
 }
 
-/* Modern List Typography */
+/* Modern Chat Interface */
+.chat-container {
+  @apply h-[500px] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col bg-white dark:bg-slate-800 shadow-soft;
+}
+
+.chat-messages {
+  @apply flex-1 overflow-y-auto p-4 bg-slate-50 dark:bg-slate-900 space-y-4;
+}
+
+.message {
+  @apply flex items-start mb-4;
+}
+
+.message.user {
+  @apply justify-end;
+}
+
+.message.ai {
+  @apply justify-start;
+}
+
+.message-content {
+  @apply max-w-[70%] px-4 py-3 rounded-2xl break-words font-sans text-sm leading-relaxed;
+}
+
+.message.user .message-content {
+  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-br-md shadow-soft;
+}
+
+.message.ai .message-content {
+  @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-bl-md shadow-soft text-slate-900 dark:text-slate-100;
+}
+
+/* Modern Timer Display */
+.timer-display {
+  @apply sticky top-0 bg-gradient-to-r from-primary-500 to-primary-600 text-white p-4 text-center font-semibold text-lg z-10 rounded-t-2xl flex justify-between items-center;
+}
+
+.timer-warning {
+  @apply bg-gradient-to-r from-danger-500 to-danger-600 animate-pulse-slow;
+}
+
+/* Modern Chat Input */
+.chat-input {
+  @apply border-t border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-800 rounded-b-2xl;
+}
+
+/* Modern Candidate Cards */
+.candidate-card {
+  @apply mb-4 rounded-2xl transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+}
+
+.candidate-card:hover {
+  @apply shadow-medium;
+}
+
+/* Score Badges */
+.score-badge {
+  @apply text-base font-bold;
+}
+
+.score-excellent {
+  @apply text-success-500;
+}
+
+.score-good {
+  @apply text-primary-500;
+}
+
+.score-fair {
+  @apply text-warning-500;
+}
+
+.score-poor {
+  @apply text-danger-500;
+}
+
+/* Interview Details */
+.interview-details {
+  @apply bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 mt-4 border border-slate-200 dark:border-slate-700;
+}
+
+.question-item {
+  @apply mb-6 p-4 bg-white dark:bg-slate-800 rounded-xl border-l-4 border-primary-500 shadow-soft;
+}
+
+.answer-item {
+  @apply mt-3 p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg border-l-4 border-primary-500;
+}
+
+.feedback-item {
+  @apply mt-2 px-3 py-2 bg-warning-50 dark:bg-warning-900/20 rounded border-l-4 border-warning-500;
+}
+
+/* Welcome Back Modal */
+.welcome-back-modal .ant-modal-content {
+  @apply rounded-2xl shadow-large;
+}
+
+.resume-info {
+  @apply bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-2xl p-4 my-4;
+}
+
+.missing-fields {
+  @apply text-danger-500 font-bold;
+}
+
+.loading-spinner {
+  @apply text-center p-10;
+}
+
+/* Modern List Styles */
 .ant-list-item {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans rounded-xl transition-all duration-200 hover:bg-slate-50 dark:hover:bg-slate-800;
 }
 
 .ant-list-item-meta-title {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.01em';
+  @apply font-sans font-semibold tracking-tight text-slate-900 dark:text-slate-100;
 }
 
 .ant-list-item-meta-description {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.5;
+  @apply font-sans font-normal leading-relaxed text-slate-600 dark:text-slate-400;
 }
 
-/* Modern Badge Typography */
+/* Modern Badge Styles */
 .ant-badge {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans;
 }
 
 .ant-badge-count {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
+  @apply font-sans font-medium;
 }
 
-/* Modern Tag Typography */
+/* Modern Tag Styles */
 .ant-tag {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
-  letter-spacing: '-0.01em';
+  @apply font-sans font-medium tracking-tight rounded-lg px-3 py-1;
 }
 
-/* Modern Timeline Typography */
+/* Modern Timeline Styles */
 .ant-timeline-item-content {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans;
 }
 
-/* Modern Result Typography */
+/* Modern Result Styles */
 .ant-result-title {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.02em';
+  @apply font-sans font-semibold tracking-tight text-slate-900 dark:text-slate-100;
 }
 
 .ant-result-subtitle {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.6;
+  @apply font-sans font-normal leading-relaxed text-slate-600 dark:text-slate-400;
 }
 
-/* Modern Form Typography */
+/* Modern Form Styles */
 .ant-form-item-label > label {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500;
+  @apply font-sans font-medium text-slate-700 dark:text-slate-300;
 }
 
 .ant-form-item-explain,
 .ant-form-item-extra {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.5;
+  @apply font-sans font-normal leading-relaxed text-slate-500 dark:text-slate-400;
 }
 
-/* Modern Table Typography */
+/* Modern Table Styles */
 .ant-table {
-  font-family: 'Inter', sans-serif !important;
+  @apply font-sans rounded-xl overflow-hidden;
 }
 
 .ant-table-thead > tr > th {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
-  letter-spacing: '-0.01em';
+  @apply font-sans font-semibold tracking-tight bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300;
 }
 
 .ant-table-tbody > tr > td {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.5;
+  @apply font-sans font-normal leading-relaxed text-slate-600 dark:text-slate-400;
 }
 
-/* Modern Spin Typography */
+.ant-table-tbody > tr:hover > td {
+  @apply bg-slate-50 dark:bg-slate-800;
+}
+
+/* Modern Spin Styles */
 .ant-spin-text {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
+  @apply font-sans font-normal text-slate-600 dark:text-slate-400;
 }
 
-/* Modern Empty Typography */
+/* Modern Empty Styles */
 .ant-empty-description {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400;
-  line-height: 1.6;
+  @apply font-sans font-normal leading-relaxed text-slate-500 dark:text-slate-400;
 }
 
-.content-area {
-  padding: 24px;
-  background: white;
-  margin: 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  min-height: calc(100vh - 120px);
+/* Custom Components */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent;
 }
 
-.tab-content {
-  padding: 20px 0;
+.glass-effect {
+  @apply backdrop-blur-sm bg-white/80 dark:bg-slate-800/80 border border-white/20 dark:border-slate-700/20;
 }
 
-.upload-area {
-  border: 2px dashed #d9d9d9;
-  border-radius: 8px;
-  padding: 40px;
-  text-align: center;
-  background: #fafafa;
-  transition: all 0.3s;
+.typing-indicator {
+  @apply flex space-x-1;
 }
 
-.upload-area:hover {
-  border-color: #1890ff;
-  background: #f0f8ff;
+.typing-indicator span {
+  @apply w-2 h-2 bg-slate-400 rounded-full animate-bounce;
 }
 
-.chat-container {
-  height: 500px;
-  border: 1px solid #d9d9d9;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+.typing-indicator span:nth-child(2) {
+  @apply delay-100;
 }
 
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
-  background: #fafafa;
+.typing-indicator span:nth-child(3) {
+  @apply delay-200;
 }
 
-.message {
-  margin-bottom: 16px;
-  display: flex;
-  align-items: flex-start;
+/* Circular Progress Timer */
+.circular-timer {
+  @apply relative w-16 h-16;
 }
 
-.message.user {
-  justify-content: flex-end;
+.circular-timer svg {
+  @apply w-full h-full transform -rotate-90;
 }
 
-.message.ai {
-  justify-content: flex-start;
+.circular-timer .progress-ring {
+  @apply transition-all duration-1000 ease-in-out;
 }
 
-.message-content {
-  max-width: 70%;
-  padding: 12px 16px;
-  border-radius: 18px;
-  word-wrap: break-word;
+.circular-timer .progress-ring.warning {
+  @apply stroke-warning-500;
 }
 
-.message.user .message-content {
-  background: #1890ff;
-  color: white;
-  border-bottom-right-radius: 4px;
+.circular-timer .progress-ring.danger {
+  @apply stroke-danger-500;
 }
 
-.message.ai .message-content {
-  background: white;
-  border: 1px solid #d9d9d9;
-  border-bottom-left-radius: 4px;
+.circular-timer .progress-ring.success {
+  @apply stroke-success-500;
 }
 
-.timer-display {
-  position: sticky;
-  top: 0;
-  background: #1890ff;
-  color: white;
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  z-index: 10;
-}
-
-.timer-warning {
-  background: #ff4d4f !important;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-.chat-input {
-  border-top: 1px solid #d9d9d9;
-  padding: 16px;
-  background: white;
-}
-
-.candidate-card {
-  margin-bottom: 16px;
-  border-radius: 8px;
-  transition: all 0.3s;
-}
-
-.candidate-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.score-badge {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.score-excellent {
-  color: #52c41a;
-}
-
-.score-good {
-  color: #1890ff;
-}
-
-.score-fair {
-  color: #faad14;
-}
-
-.score-poor {
-  color: #ff4d4f;
-}
-
-.interview-details {
-  background: #fafafa;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 16px;
-}
-
-.question-item {
-  margin-bottom: 24px;
-  padding: 16px;
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #1890ff;
-}
-
-.answer-item {
-  margin-top: 12px;
-  padding: 12px;
-  background: #f0f8ff;
-  border-radius: 6px;
-  border-left: 3px solid #1890ff;
-}
-
-.feedback-item {
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: #fff7e6;
-  border-radius: 4px;
-  border-left: 3px solid #faad14;
-}
-
-.welcome-back-modal .ant-modal-content {
-  border-radius: 12px;
-}
-
-.resume-info {
-  background: #f0f8ff;
-  border: 1px solid #91d5ff;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
-}
-
-.missing-fields {
-  color: #ff4d4f;
-  font-weight: bold;
-}
-
-.loading-spinner {
-  text-align: center;
-  padding: 40px;
-}
-
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .content-area {
-    margin: 12px;
-    padding: 16px;
+    @apply m-3 p-4;
   }
   
   .message-content {
-    max-width: 85%;
+    @apply max-w-[85%];
   }
   
   .chat-container {
-    height: 400px;
+    @apply h-[400px];
   }
+  
+  .upload-area {
+    @apply p-6;
+  }
+}
+
+/* Dark mode specific overrides */
+.dark .ant-card {
+  @apply border-slate-700;
+}
+
+.dark .ant-input,
+.dark .ant-input-affix-wrapper,
+.dark .ant-select-selector,
+.dark .ant-textarea {
+  @apply bg-slate-700 border-slate-600 text-slate-100;
+}
+
+.dark .ant-table-thead > tr > th {
+  @apply bg-slate-800 text-slate-300;
+}
+
+.dark .ant-table-tbody > tr > td {
+  @apply text-slate-400;
+}
+
+.dark .ant-table-tbody > tr:hover > td {
+  @apply bg-slate-800;
+}
+
+/* Animation classes */
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.slide-up {
+  @apply animate-slide-up;
+}
+
+.slide-down {
+  @apply animate-slide-down;
+}
+
+.pulse-glow {
+  @apply animate-pulse-slow;
+}
+
+.bounce-slow {
+  @apply animate-bounce-slow;
+}
+
+.spin-slow {
+  @apply animate-spin-slow;
+}
+
+.gradient-animate {
+  @apply animate-gradient;
+}
+
+.typing-animation {
+  @apply animate-typing;
+}
+
+.blink-animation {
+  @apply animate-blink;
 }

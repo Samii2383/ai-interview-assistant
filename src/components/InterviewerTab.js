@@ -13,17 +13,36 @@ import {
   Empty,
   Modal,
   Divider,
-  Progress
+  Progress,
+  Table,
+  Drawer,
+  Statistic,
+  Row,
+  Col,
+  Avatar
 } from 'antd';
 import { 
-  SearchOutlined, 
-  UserOutlined, 
-  MailOutlined, 
-  PhoneOutlined,
-  CalendarOutlined,
-  TrophyOutlined,
-  EyeOutlined
-} from '@ant-design/icons';
+  Search as SearchIcon, 
+  User, 
+  Mail, 
+  Phone,
+  Calendar,
+  Trophy,
+  Eye,
+  Filter,
+  SortAsc,
+  SortDesc,
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+  Star,
+  BarChart3,
+  Users,
+  Award,
+  X
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import CandidateDetails from './CandidateDetails';
 
 const { Title, Text } = Typography;
@@ -36,6 +55,9 @@ const InterviewerTab = () => {
   const [sortBy, setSortBy] = useState('date');
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterScore, setFilterScore] = useState('all');
 
   const getScoreColor = (score) => {
     if (score >= 80) return 'success';
@@ -67,11 +89,36 @@ const InterviewerTab = () => {
     }
   };
 
+  // Calculate statistics
+  const stats = {
+    total: candidates.length,
+    completed: candidates.filter(c => c.status === 'completed').length,
+    inProgress: candidates.filter(c => c.status === 'in_progress').length,
+    averageScore: candidates
+      .filter(c => c.interview?.finalScore)
+      .reduce((acc, c) => acc + c.interview.finalScore, 0) / 
+      candidates.filter(c => c.interview?.finalScore).length || 0,
+    excellent: candidates.filter(c => c.interview?.finalScore >= 80).length,
+    good: candidates.filter(c => c.interview?.finalScore >= 60 && c.interview?.finalScore < 80).length,
+    fair: candidates.filter(c => c.interview?.finalScore >= 40 && c.interview?.finalScore < 60).length,
+    poor: candidates.filter(c => c.interview?.finalScore < 40).length,
+  };
+
   const filteredCandidates = candidates
-    .filter(candidate => 
-      candidate.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      candidate.email.toLowerCase().includes(searchText.toLowerCase())
-    )
+    .filter(candidate => {
+      const matchesSearch = candidate.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                           candidate.email.toLowerCase().includes(searchText.toLowerCase());
+      
+      const matchesStatus = filterStatus === 'all' || candidate.status === filterStatus;
+      
+      const matchesScore = filterScore === 'all' || 
+        (filterScore === 'excellent' && candidate.interview?.finalScore >= 80) ||
+        (filterScore === 'good' && candidate.interview?.finalScore >= 60 && candidate.interview?.finalScore < 80) ||
+        (filterScore === 'fair' && candidate.interview?.finalScore >= 40 && candidate.interview?.finalScore < 60) ||
+        (filterScore === 'poor' && candidate.interview?.finalScore < 40);
+      
+      return matchesSearch && matchesStatus && matchesScore;
+    })
     .sort((a, b) => {
       switch (sortBy) {
         case 'score':
@@ -86,8 +133,113 @@ const InterviewerTab = () => {
 
   const handleViewDetails = (candidate) => {
     setSelectedCandidate(candidate);
-    setShowDetails(true);
+    setShowDrawer(true);
   };
+
+  // Table columns configuration
+  const columns = [
+    {
+      title: 'Candidate',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text, record) => (
+        <div className="flex items-center space-x-3">
+          <Avatar 
+            size={40} 
+            icon={<User className="w-5 h-5" />}
+            className="bg-gradient-to-br from-primary-500 to-primary-600"
+          />
+          <div>
+            <div className="font-semibold text-slate-900 dark:text-slate-100">{text}</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">{record.email}</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => (
+        <Tag 
+          color={getStatusColor(status)}
+          className="!rounded-lg !px-3 !py-1 !font-medium"
+        >
+          {getStatusText(status)}
+        </Tag>
+      ),
+    },
+    {
+      title: 'Score',
+      dataIndex: ['interview', 'finalScore'],
+      key: 'score',
+      render: (score) => (
+        <div className="flex items-center space-x-2">
+          <Badge 
+            count={score ? `${score}/100` : 'N/A'} 
+            style={{ 
+              backgroundColor: score ? getScoreColor(score) === 'success' ? '#22c55e' : 
+                               getScoreColor(score) === 'processing' ? '#3b82f6' :
+                               getScoreColor(score) === 'warning' ? '#f59e0b' : '#ef4444' : '#94a3b8'
+            }}
+            className="!rounded-lg"
+          />
+          {score && (
+            <div className="text-sm text-slate-500 dark:text-slate-400">
+              Grade: {getScoreText(score)}
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      title: 'Date',
+      dataIndex: 'createdAt',
+      key: 'date',
+      render: (date) => (
+        <div className="flex items-center space-x-2 text-slate-600 dark:text-slate-400">
+          <Calendar className="w-4 h-4" />
+          <span className="text-sm">{new Date(date).toLocaleDateString()}</span>
+        </div>
+      ),
+    },
+    {
+      title: 'Progress',
+      key: 'progress',
+      render: (_, record) => {
+        const interview = record.interview;
+        const progress = interview ? (interview.answers?.length || 0) / interview.questions.length * 100 : 0;
+        return (
+          <div className="flex items-center space-x-2">
+            <Progress 
+              percent={progress} 
+              size="small" 
+              showInfo={false}
+              strokeColor={progress === 100 ? '#22c55e' : '#3b82f6'}
+              className="flex-1"
+            />
+            <span className="text-sm text-slate-500 dark:text-slate-400">
+              {interview ? `${interview.answers?.length || 0}/${interview.questions.length}` : '0/0'}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (_, record) => (
+        <Button
+          type="primary"
+          icon={<Eye className="w-4 h-4" />}
+          onClick={() => handleViewDetails(record)}
+          className="!rounded-xl"
+        >
+          View Details
+        </Button>
+      ),
+    },
+  ];
 
   const renderCandidateCard = (candidate) => {
     const interview = candidate.interview;
@@ -172,73 +324,221 @@ const InterviewerTab = () => {
   };
 
   return (
-    <div className="tab-content">
-      <Card style={{ marginBottom: 24 }}>
-        <Title level={2}>Interview Dashboard</Title>
-        <Text type="secondary">
-          Review and manage candidate interviews
-        </Text>
-      </Card>
-
-      <Card>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-          <Title level={3} style={{ margin: 0 }}>
-            Candidates ({filteredCandidates.length})
-          </Title>
-          <Space>
-            <Search
-              placeholder="Search candidates..."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              style={{ width: 200 }}
-              prefix={<SearchOutlined />}
-            />
-            <Select
-              value={sortBy}
-              onChange={setSortBy}
-              style={{ width: 120 }}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="tab-content"
+    >
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-8"
+      >
+        <Card className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 border-primary-200 dark:border-primary-800">
+          <div className="text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-glow"
             >
-              <Option value="date">Date</Option>
-              <Option value="name">Name</Option>
-              <Option value="score">Score</Option>
-            </Select>
-          </Space>
-        </div>
+              <BarChart3 className="w-8 h-8 text-white" />
+            </motion.div>
+            
+            <Title level={2} className="gradient-text mb-2">
+              Interview Dashboard
+            </Title>
+            <Text className="text-slate-600 dark:text-slate-400 text-lg">
+              Review and manage candidate interviews
+            </Text>
+          </div>
+        </Card>
+      </motion.div>
 
-        {filteredCandidates.length === 0 ? (
-          <Empty 
-            description="No candidates found"
-            image={Empty.PRESENTED_IMAGE_SIMPLE}
-          />
-        ) : (
-          <List
-            dataSource={filteredCandidates}
-            renderItem={renderCandidateCard}
-            pagination={{
-              pageSize: 5,
-              showSizeChanger: true,
-              showQuickJumper: true,
-              showTotal: (total, range) => 
-                `${range[0]}-${range[1]} of ${total} candidates`
-            }}
-          />
-        )}
-      </Card>
+      {/* Statistics Cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mb-8"
+      >
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={6}>
+            <Card className="text-center hover:shadow-medium transition-all duration-300">
+              <Statistic
+                title="Total Candidates"
+                value={stats.total}
+                prefix={<Users className="w-5 h-5 text-primary-500" />}
+                valueStyle={{ color: '#3b82f6' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <Card className="text-center hover:shadow-medium transition-all duration-300">
+              <Statistic
+                title="Completed"
+                value={stats.completed}
+                prefix={<CheckCircle className="w-5 h-5 text-success-500" />}
+                valueStyle={{ color: '#22c55e' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <Card className="text-center hover:shadow-medium transition-all duration-300">
+              <Statistic
+                title="In Progress"
+                value={stats.inProgress}
+                prefix={<Clock className="w-5 h-5 text-warning-500" />}
+                valueStyle={{ color: '#f59e0b' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <Card className="text-center hover:shadow-medium transition-all duration-300">
+              <Statistic
+                title="Average Score"
+                value={Math.round(stats.averageScore)}
+                suffix="/100"
+                prefix={<Award className="w-5 h-5 text-primary-500" />}
+                valueStyle={{ color: '#3b82f6' }}
+              />
+            </Card>
+          </Col>
+        </Row>
+      </motion.div>
 
-      <Modal
-        title={`Interview Details - ${selectedCandidate?.name}`}
-        open={showDetails}
-        onCancel={() => setShowDetails(false)}
-        footer={null}
+      {/* Filters and Search */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mb-6"
+      >
+        <Card>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 flex-1">
+              <Input
+                placeholder="Search candidates..."
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                prefix={<SearchIcon className="w-4 h-4 text-slate-400" />}
+                className="!rounded-xl sm:w-64"
+                size="large"
+              />
+              
+              <Select
+                value={filterStatus}
+                onChange={setFilterStatus}
+                className="!rounded-xl sm:w-32"
+                size="large"
+              >
+                <Option value="all">All Status</Option>
+                <Option value="completed">Completed</Option>
+                <Option value="in_progress">In Progress</Option>
+                <Option value="paused">Paused</Option>
+              </Select>
+              
+              <Select
+                value={filterScore}
+                onChange={setFilterScore}
+                className="!rounded-xl sm:w-32"
+                size="large"
+              >
+                <Option value="all">All Scores</Option>
+                <Option value="excellent">Excellent (80+)</Option>
+                <Option value="good">Good (60-79)</Option>
+                <Option value="fair">Fair (40-59)</Option>
+                <Option value="poor">Poor (&lt;40)</Option>
+              </Select>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <Select
+                value={sortBy}
+                onChange={setSortBy}
+                className="!rounded-xl w-32"
+                size="large"
+              >
+                <Option value="date">Sort by Date</Option>
+                <Option value="name">Sort by Name</Option>
+                <Option value="score">Sort by Score</Option>
+              </Select>
+            </div>
+          </div>
+        </Card>
+      </motion.div>
+
+      {/* Data Table */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <Card>
+          <div className="flex items-center justify-between mb-6">
+            <Title level={3} className="!mb-0">
+              Candidates ({filteredCandidates.length})
+            </Title>
+          </div>
+
+          {filteredCandidates.length === 0 ? (
+            <Empty 
+              description="No candidates found"
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              className="py-12"
+            />
+          ) : (
+            <Table
+              columns={columns}
+              dataSource={filteredCandidates}
+              rowKey="id"
+              pagination={{
+                pageSize: 10,
+                showSizeChanger: true,
+                showQuickJumper: true,
+                showTotal: (total, range) => 
+                  `${range[0]}-${range[1]} of ${total} candidates`,
+                className: '!mt-6'
+              }}
+              className="modern-table"
+            />
+          )}
+        </Card>
+      </motion.div>
+
+      {/* Candidate Details Drawer */}
+      <Drawer
+        title={
+          <div className="flex items-center space-x-2">
+            <User className="w-5 h-5 text-primary-500" />
+            <span>Interview Details - {selectedCandidate?.name}</span>
+          </div>
+        }
+        open={showDrawer}
+        onClose={() => setShowDrawer(false)}
         width={800}
-        style={{ top: 20 }}
+        className="modern-drawer"
+        extra={
+          <Button 
+            type="text" 
+            icon={<X className="w-4 h-4" />} 
+            onClick={() => setShowDrawer(false)}
+          />
+        }
       >
         {selectedCandidate && (
           <CandidateDetails candidate={selectedCandidate} />
         )}
-      </Modal>
-    </div>
+      </Drawer>
+    </motion.div>
   );
 };
 
 export default InterviewerTab;
+
+
+
+
