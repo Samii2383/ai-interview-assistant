@@ -128,36 +128,9 @@ ec05ef0 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, d
 3. Use search and sorting to find specific candidates
 4. Click "View Details" to see complete interview results
 5. Review AI feedback and candidate performance
-
-##  🗂 Project Structure
-
-```
-src/
-├── components/
-│   ├── MainLayout.js          # Main app layout with navigation
-│   ├── IntervieweeTab.js      # Interviewee interface
-│   ├── InterviewerTab.js      # Interviewer dashboard
-│   ├── ChatInterface.js       # Chat interface with timers
-│   ├── CandidateDetails.js    # Detailed candidate view
-│   └── WelcomeBackModal.js    # Session resume modal
-├── store/
-│   ├── index.js              # Redux store configuration
-│   └── candidateSlice.js      # Redux slice for candidates
-├── services/
-│   ├── resumeParser.js        # Resume parsing logic
-│   └── aiService.js          # AI question generation and scoring
-├── App.js                     # Main app component
-├── App.css                    # Global styles
-└── index.js                   # App entry point
+odal
 
 ```
-
-## Snapshots
-[Home Page]<img width="1024" height="720" alt="Screenshot 2025-09-28 005720" src="https://github.com/user-attachments/assets/2124a803-0da6-4832-891a-37fd60d61642" />
-[Resume Praising]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005745" src="https://github.com/user-attachments/assets/4491e4d2-5abd-4802-81fd-cea1a441e64e" />
-[Interview interface]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005833" src="https://github.com/user-attachments/assets/6246b6f8-9b64-49b9-8ef6-5e5f5c0a2afa" />
-[Interview Dashboard]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005921" src="https://github.com/user-attachments/assets/24c5307b-8da6-4ac3-be49-ad454e6f815f" />
-[Result Window]<img width="1919" height="1079" alt="Screenshot 2025-09-28 005945" src="https://github.com/user-attachments/assets/c4a295d6-b908-4046-bfb0-9aed83bca0a7" />
 
 
 ## Dependencies
