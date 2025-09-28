@@ -1,12 +1,4 @@
 
-## AI Interview Assistant 🤖
-
-A comprehensive React application for conducting automated interviews with resume parsing and AI-powered question generation. Perfect for showcasing advanced React skills, state management, and UX patterns.
-
-## 🚀 Live Demo
-[ai-interview-aissistant](https://ai-interview-assistant-lyart-tau.vercel.app/)
-
-## 🛠 Features
 
 # 🤖 AI Interview Assistant
 
@@ -18,6 +10,9 @@ A comprehensive React application for conducting automated interviews with resum
 [![Framer Motion](https://img.shields.io/badge/Framer%20Motion-10.16.4-purple.svg)](https://www.framer.com/motion/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, dashboard, and responsiveness)
+
+## Live Demo
+[ai-interview-assistance](https://ai-interview-assistant-dwxp3nnc1-sameerkhan47149-8480s-projects.vercel.app/)
 
 ## ✨ Features
 
@@ -59,13 +54,16 @@ ec05ef0 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, d
 ## 🖼️ Screenshots
 
 ### Dashboard Overview
-![Dashboard](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Modern+Dashboard+with+Analytics)
+![Dashboard](<img width="1316" height="1079" alt="Screenshot 2025-09-28 133841" src="https://github.com/user-attachments/assets/9b15583f-a43b-4550-8d05-d4d0e0c90e06" />
+
 
 ### Interview Interface
-![Interview](https://via.placeholder.com/800x400/22c55e/ffffff?text=Real-time+Interview+Chat)
+![Interview](<img width="1885" height="903" alt="Screenshot 2025-09-28 134119" src="https://github.com/user-attachments/assets/415ece05-4b0c-472f-81e9-7390e6542bce" />
+)
 
 ### Candidate Management
-![Candidates](https://via.placeholder.com/800x400/f59e0b/ffffff?text=Candidate+Management+Table)
+![Candidates](<img width="1902" height="911" alt="Screenshot 2025-09-28 134201" src="https://github.com/user-attachments/assets/932825d3-2332-48fe-8b1c-e28178075cd3" />
+)
 
 ## 🛠️ Tech Stack
 
@@ -118,28 +116,6 @@ ec05ef0 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, d
    ```
    http://localhost:3000
    ```
-
-### Build for Production
-
-
-### For Interviewers
-1. Navigate to the "Interviewer (Dashboard)" tab
-2. View all candidates and their scores
-3. Use search and sorting to find specific candidates
-4. Click "View Details" to see complete interview results
-5. Review AI feedback and candidate performance
-odal
-
-```
-
-
-## Dependencies
-
-npm run build
-
-
-The build artifacts will be stored in the `build/` directory.
-(✨ Polished UI: modernized design with Tailwind/AntD, improved chat, dashboard, and responsiveness)
 
 ## 📁 Project Structure
 
@@ -239,13 +215,6 @@ Complete dark mode support with:
 - Persistent storage
 - Smooth transitions
 
-## 🚀 Performance
-
-- **Bundle Size**: ~420KB gzipped
-- **First Paint**: < 1.5s
-- **Interactive**: < 2s
-- **Lighthouse Score**: 95+
-
 ## 🧪 Testing
 
 ```bash
@@ -265,23 +234,6 @@ npm test -- --watch
 ```bash
 npm install -g vercel
 vercel
-```
-
-### **Netlify**
-```bash
-npm run build
-# Upload build/ folder to Netlify
-```
-
-### **Docker**
-```dockerfile
-FROM node:16-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY build/ ./build/
-EXPOSE 3000
-CMD ["npm", "start"]
 ```
 
 ## 🤝 Contributing
@@ -304,13 +256,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Lucide** - For beautiful icons
 - **React Team** - For the amazing framework
 
-## 📞 Support
+## 📫 Contact / Contributions
 
-- **Email**: support@ai-interview-assistant.com
-- **Discord**: [Join our community](https://discord.gg/ai-interview-assistant)
-- **GitHub Issues**: [Report bugs](https://github.com/yourusername/ai-interview-assistant/issues)
+- Email: sameerkhan47149@gmail.com
+- LinkedIn: https://www.linkedin.com/in/sameer-khan-312715235/
+- GitHub: https://github.com/Samii2383
 
-## 🗺️ Roadmap
+
+## 🗺️ Future Enhancemnet
 
 - [ ] **Video Interviews** - Face-to-face video chat integration
 - [ ] **Advanced Analytics** - Detailed performance insights
@@ -329,4 +282,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [⭐ Star this repo](https://github.com/Samii2383/ai-interview-assistant) • [🐛 Report Bug](https://github.com/Samii2383/ai-interview-assistant/issues) • [💡 Request Feature](https://github.com/Samii2383/ai-interview-assistant/issues)
 
 </div>
-(✨ Polished UI: modernized design with Tailwind/AntD, improved chat, dashboard, and responsiveness)
