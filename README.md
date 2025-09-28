@@ -54,16 +54,16 @@ ec05ef0 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, d
 ## 🖼️ Screenshots
 
 ### Dashboard Overview
-![Dashboard](<img width="1316" height="1079" alt="Screenshot 2025-09-28 133841" src="https://github.com/user-attachments/assets/9b15583f-a43b-4550-8d05-d4d0e0c90e06" />
+[Dashboard]<img width="1316" height="1079" alt="Screenshot 2025-09-28 133841" src="https://github.com/user-attachments/assets/9b15583f-a43b-4550-8d05-d4d0e0c90e06" />
 
 
 ### Interview Interface
-![Interview](<img width="1885" height="903" alt="Screenshot 2025-09-28 134119" src="https://github.com/user-attachments/assets/415ece05-4b0c-472f-81e9-7390e6542bce" />
-)
+[Interview]<img width="1885" height="903" alt="Screenshot 2025-09-28 134119" src="https://github.com/user-attachments/assets/415ece05-4b0c-472f-81e9-7390e6542bce" />
+
 
 ### Candidate Management
-![Candidates](<img width="1902" height="911" alt="Screenshot 2025-09-28 134201" src="https://github.com/user-attachments/assets/932825d3-2332-48fe-8b1c-e28178075cd3" />
-)
+[Candidates]<img width="1902" height="911" alt="Screenshot 2025-09-28 134201" src="https://github.com/user-attachments/assets/932825d3-2332-48fe-8b1c-e28178075cd3" />
+
 
 ## 🛠️ Tech Stack
 
