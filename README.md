@@ -54,7 +54,11 @@ ec05ef0 (✨ Polished UI: modernized design with Tailwind/AntD, improved chat, d
 ## 🖼️ Screenshots
 
 ### Dashboard Overview
-[Dashboard]<img width="1316" height="1079" alt="Screenshot 2025-09-28 133841" src="https://github.com/user-attachments/assets/9b15583f-a43b-4550-8d05-d4d0e0c90e06" />
+[Dashboard]<img width="1895" height="907" alt="Screenshot 2025-09-28 133919" src="https://github.com/user-attachments/assets/54915130-a785-4fe2-a4c5-88283863815c" />
+
+
+### Resume Praising
+[Dashboard]<img width="1896" height="910" alt="Screenshot 2025-09-28 134016" src="https://github.com/user-attachments/assets/11939b06-4d7d-452c-83b9-d52313f824d2" />
 
 
 ### Interview Interface
